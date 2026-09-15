@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}My QR | PayFlow{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-5">
+
+            <div class="card shadow-lg p-4 text-center">
+
+                <h2 class="mb-3">
+                    📱 My PayFlow QR
+                </h2>
+
+                <img src="{{ url_for('static', filename=qr_image) }}"
+                     class="img-fluid mb-3"
+                     style="max-width:250px;">
+
+                <p class="fw-bold">
+                    {{ email }}
+                </p>
+
+                <small class="text-muted">
+                    Scan this QR to receive money in PayFlow.
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

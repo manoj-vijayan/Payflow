@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Transfer From Bank | PayFlow{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-lg p-4">
+
+                <h2 class="text-center mb-4">
+                    🏦 Transfer From Bank
+                </h2>
+
+                <form action="{{ url_for('transfer_bank') }}"
+                      method="POST">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Select Bank
+                        </label>
+
+                        <select name="bank_id"
+                                class="form-select"
+                                required>
+
+                            <option value="">Choose Bank</option>
+
+                            {% for account in accounts %}
+
+                                <option value="{{ account['id'] }}">
+
+                                    {{ account['bank_name'] }}
+                                    - ****{{ account['account_number'][-4:] }}
+
+                                    (₹{{ "%.2f"|format(account['balance']) }})
+
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Amount
+                        </label>
+                        <div class="mb-4">
+                        <input type="number"
+                               name="amount"
+                               class="form-control"
+                               min="1"
+                               step="0.01"
+                               required>
+
+                    </div>
+ <label class="form-label">
+        UPI PIN
+    </label>
+
+    <input type="password"
+           name="upi_pin"
+           class="form-control"
+           maxlength="4"
+           pattern="\d{4}"
+           placeholder="Enter 4-digit UPI PIN"
+           required>
+
+</div>
+                    <button type="submit"
+                            class="btn btn-success w-100">
+
+                        💸 Transfer to Wallet
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

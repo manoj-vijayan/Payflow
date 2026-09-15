@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Settings | PayFlow{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-sm p-4">
+
+        <h2 class="mb-4">⚙ Settings</h2>
+
+        <div class="list-group">
+
+            <a href="{{ url_for('profile') }}"
+               class="list-group-item list-group-item-action">
+                👤 Profile
+            </a>
+
+            <a href="{{ url_for('my_qr') }}"
+               class="list-group-item list-group-item-action">
+                📱 My QR
+            </a>
+
+            <a href="{{ url_for('bank_accounts') }}"
+               class="list-group-item list-group-item-action">
+                🏦 Linked Bank Accounts
+            </a>
+
+            <a href="{{ url_for('transfer_bank') }}"
+               class="list-group-item list-group-item-action">
+                💳 Bank Transfer
+            </a>
+
+            <a href="{{ url_for('set_upi_pin') }}"
+               class="list-group-item list-group-item-action">
+                🔐 Set UPI PIN
+            </a>
+
+            <a href="#"
+               class="list-group-item list-group-item-action">
+                🔔 Notifications & Emails
+            </a>
+
+            <a href="#"
+               class="list-group-item list-group-item-action">
+                🔒 Privacy & Security
+            </a>
+
+            <a href="#"
+               class="list-group-item list-group-item-action">
+                📄 About PayFlow
+            </a>
+
+            <a href="#"
+               class="list-group-item list-group-item-action">
+                ❓ Help & Feedback
+            </a>
+
+            <a href="{{ url_for('logout') }}"
+               class="list-group-item list-group-item-action text-danger">
+                🚪 Sign Out
+            </a>
+
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ url_for('dashboard') }}"
+               class="btn btn-secondary">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

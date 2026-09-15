@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction History{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">
+        💳 Transaction History
+    </h2>
+
+    {% if records %}
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>Date & Time</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Receipt</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for row in records %}
+
+            <tr>
+
+                <td>{{ row["created_at"] }}</td>
+
+                <td>{{ row["transaction_type"] }}</td>
+
+                <td>₹ {{ "%.2f"|format(row["amount"]) }}</td>
+
+                <td>{{ row["description"] }}</td>
+
+               <td class="text-center">
+
+    <a href="{{ url_for('download_receipt', transaction_id=row['id']) }}"
+       class="btn btn-sm btn-primary">
+
+        📄 Download
+
+    </a>
+
+</td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <div class="alert alert-info">
+
+        No transactions found.
+
+    </div>
+
+    {% endif %}
+
+    <a href="{{ url_for('dashboard') }}"
+       class="btn btn-primary">
+
+        ← Back to Dashboard
+
+    </a>
+
+</div>
+
+{% endblock %}

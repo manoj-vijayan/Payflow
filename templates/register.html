@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+
+{% block title %}Register | PayFlow{% endblock %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <!-- Left Branding Panel -->
+    <div class="left-panel">
+
+        <h1>💳 PayFlow</h1>
+
+        <h2>Smart Payments.<br>Smarter Insights.</h2>
+
+        <p>
+            A secure digital payment platform with AI-powered financial insights.
+        </p>
+
+        <ul>
+            <li>✅ Fast & Secure Payments</li>
+            <li>✅ AI Expense Analysis</li>
+            <li>✅ Smart Transaction History</li>
+            <li>✅ Future-ready Digital Wallet</li>
+        </ul>
+
+    </div>
+
+    <!-- Right Registration Panel -->
+    <div class="right-panel">
+
+        <div class="form-card">
+
+            <h2>Create Account</h2>
+
+            <p>Start your PayFlow journey today.</p>
+
+            <button class="google-btn" type="button">
+                Continue with Google
+            </button>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <form
+                id="registerForm"
+                method="POST"
+                action="{{ url_for('register') }}">
+
+                <!-- Full Name -->
+                <div class="form-group mb-3">
+
+                    <label for="fullname">Full Name</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        maxlength="50"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+                <!-- Email -->
+                <div class="form-group mb-3">
+
+                    <label for="email">Email Address</label>
+
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        maxlength="100"
+                        required>
+
+                    <small id="emailMessage"></small>
+
+                </div>
+
+                <!-- Country + Phone -->
+                <div class="row">
+
+                    <div class="col-4">
+
+                        <label for="country">Country</label>
+
+                        <select
+                            class="form-control"
+                            id="country"
+                            name="country"
+                            required>
+
+                            <option value="+91">+91</option>
+                            <option value="+1">+1</option>
+                            <option value="+44">+44</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-8">
+
+                        <label for="phone">Phone Number</label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="phone"
+                            name="phone"
+                            placeholder="9876543210"
+                            maxlength="10"
+                            autocomplete="tel"
+                            required>
+
+                        <small id="phoneMessage"></small>
+
+                    </div>
+
+                </div>
+
+                <!-- Password -->
+                <div class="form-group mt-3">
+
+                    <label for="password">Password</label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            placeholder="Create Password"
+                            minlength="8"
+                            maxlength="10"
+                            autocomplete="new-password"
+                            required>
+
+                        <button
+                            class="btn btn-outline-secondary"
+                            type="button"
+                            id="togglePassword">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                    <small class="text-muted">
+                        8–10 characters, uppercase, lowercase,
+                        number and special character.
+                    </small>
+
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group mt-3">
+
+                    <label for="confirmPassword">Confirm Password</label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            minlength="8"
+                            maxlength="10"
+                            autocomplete="new-password"
+                            required>
+
+                        <button
+                            class="btn btn-outline-secondary"
+                            type="button"
+                            id="toggleConfirmPassword">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                    <div class="mt-2">
+                        <small id="confirmMessage"></small>
+                    </div>
+
+                </div>
+
+                <!-- Password Strength -->
+                <div class="password-strength mt-3">
+
+                    <label>Password Strength</label>
+
+                    <div class="strength-bar">
+
+                        <div
+                            class="strength-fill"
+                            id="strengthFill">
+                        </div>
+
+                    </div>
+
+                    <small
+                        id="strengthText"
+                        class="text-danger">
+
+                        Weak
+
+                    </small>
+
+                </div>
+
+                <div class="mt-2">
+
+                    <small
+                        id="passwordError"
+                        class="text-danger">
+                    </small>
+
+                </div>
+
+                <!-- Terms -->
+                <div class="form-check mt-4">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="terms"
+                        name="terms"
+                        required>
+
+                    <label
+                        class="form-check-label"
+                        for="terms">
+
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+
+                    </label>
+
+                </div>
+
+                <!-- Form Message -->
+
+                <p
+                    id="formMessage"
+                    class="text-center fw-bold mt-3">
+                </p>
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary w-100 mt-4">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+            <p class="login-link mt-4 text-center">
+
+    Already have an account?
+
+    <a href="{{ url_for('login') }}">
+        Login
+    </a>
+
+</p>
+
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

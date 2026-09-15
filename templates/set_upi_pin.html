@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Set UPI PIN | PayFlow{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-5">
+
+            <div class="card shadow-lg p-4">
+
+                <h2 class="text-center mb-4">
+                    🔐 Set UPI PIN
+                </h2>
+
+                <form action="{{ url_for('set_upi_pin') }}"
+                      method="POST">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            New UPI PIN
+                        </label>
+
+                        <input type="password"
+                               name="upi_pin"
+                               class="form-control"
+                               maxlength="4"
+                               pattern="\d{4}"
+                               required>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Confirm UPI PIN
+                        </label>
+
+                        <input type="password"
+                               name="confirm_upi_pin"
+                               class="form-control"
+                               maxlength="4"
+                               pattern="\d{4}"
+                               required>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+
+                        💾 Save UPI PIN
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

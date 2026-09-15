@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Analysis | PayFlow{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <h2 class="mb-4">📊 Monthly Analysis</h2>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 rounded-4 p-3">
+                <h6>Total Added</h6>
+                <h3 class="text-success">₹{{ "%.2f"|format(total_added) }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 rounded-4 p-3">
+                <h6>Total Sent</h6>
+                <h3 class="text-primary">₹{{ "%.2f"|format(total_sent) }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 rounded-4 p-3">
+                <h6>Current Balance</h6>
+                <h3 class="text-dark">₹{{ "%.2f"|format(balance) }}</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Line Chart -->
+    <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+
+        <h4 class="mb-3">📈 Monthly Spending Trend</h4>
+
+        <div style="height:350px;">
+            <canvas id="financeChart"></canvas>
+        </div>
+
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+
+        <h4 class="mb-3">🥧 Spending vs Balance</h4>
+
+        <div style="max-width:400px; margin:auto;">
+            <canvas id="pieChart"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ==============================
+    // Line Chart
+    // ==============================
+
+    const lineCtx = document.getElementById("financeChart");
+
+    new Chart(lineCtx, {
+
+        type: "line",
+
+        data: {
+
+            labels: {{ chart_labels | tojson }},
+
+            datasets: [
+
+                {
+                    label: "Money Added",
+                    data: {{ chart_added | tojson }},
+                    borderColor: "#16a34a",
+                    backgroundColor: "rgba(22,163,74,0.15)",
+                    tension: 0.35,
+                    fill: true,
+                    borderWidth: 3,
+                    pointRadius: 4
+                },
+
+                {
+                    label: "Money Sent",
+                    data: {{ chart_sent | tojson }},
+                    borderColor: "#2563eb",
+                    backgroundColor: "rgba(37,99,235,0.15)",
+                    tension: 0.35,
+                    fill: true,
+                    borderWidth: 3,
+                    pointRadius: 4
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    position: "top"
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+                        callback: function(value) {
+                            return "₹" + value;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+    // ==============================
+    // Pie Chart
+    // ==============================
+
+    const pieCtx = document.getElementById("pieChart");
+
+    new Chart(pieCtx, {
+
+        type: "pie",
+
+        data: {
+
+            labels: [
+                "Money Sent",
+                "Current Balance"
+            ],
+
+            datasets: [{
+
+                data: [
+                    {{ total_sent }},
+                    {{ balance }}
+                ],
+
+                backgroundColor: [
+                    "#2563eb",
+                    "#16a34a"
+                ],
+
+                borderColor: "#ffffff",
+                borderWidth: 2
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+                    position: "bottom"
+                }
+
+            }
+
+        }
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

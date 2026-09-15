@@ -1,0 +1,54 @@
+Registration Page : 
+
+Sign in with Google /PayFlow/ other services.
+
+username 
+	- mail ('@' .com.in , case insensitive repeated mails not allowed) , / phn no( no repeated, validation 10 digits, country code) 
+password 
+	- Password hashing should be complex and robust
+	- min 8 digits, max-10 digits ( atleast one capital, one small letter, one special char, atleast one numerical)
+	- should not be sequential in numeric/alphabet
+	- username must not be password, "password' should not be password
+    - Password encryption
+Extension of project:
+	- mail OTP authentication( using third party tools) will be added later part of this project.
+	
+	
+Login Page: 
+	- Username/password
+	- Forgot password ( should ask question to remember/ recall the password) 
+	
+
+Manage Sessions for each logins, ask for session extensions if incative for 5 mins.
+
+to do 
+  - toggle password 
+  - auth js 
+  
+  yet to
+  Phase 13.5 — Notification Badge
+Add bell icon in sidebar/header
+Show unread notification count
+Update count automatically after payments
+Phase 13.6 — Notification Center Page
+Create /notifications route
+List notifications
+Mark as read
+Mark all as read
+
+<!-- ==========================================
+     Spending Summary Chart
+=========================================== -->
+
+<section class="dashboard-card mt-4">
+
+    <h3>📊 Spending Summary</h3>
+
+    <div style="max-width: 260px; margin: 0 auto; height: 260px;">
+
+        <canvas id="monthlyChart"></canvas>
+
+    </div>
+
+</section>
+ See, but in the home page, there is a button as login, register, get started like that. Even clicking anything, it is not redirected to the login page or register page or anything else. It is the same page. And if I log out from the dashboard, it is redirecting to the login page. It is okay or we need to do any changes?

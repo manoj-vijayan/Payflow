@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}PayFlow{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            💳 PayFlow
+        </a>
+
+        <div>
+
+            <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg">
+    Login
+</a>
+
+           <a href="{{ url_for('register') }}" class="btn btn-outline-primary btn-lg">
+    Register
+</a>
+
+        </div>
+
+    </div>
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1>
+
+Smart Payments.
+<br>
+Smarter Insights.
+
+</h1>
+
+<p>
+
+PayFlow helps you manage payments,
+track expenses,
+and understand your money with an intelligent assistant.
+
+</p>
+<a href="{{ url_for('register') }}" class="btn btn-success btn-lg">
+    Get Started
+</a>
+
+<a href="#features" class="btn btn-secondary btn-lg">
+    Learn More
+</a>
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+<h1 style="font-size:9rem;">
+💳
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="container">
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="card shadow feature-card text-center">
+
+<h1>⚡</h1>
+
+<h4>Instant Transfer</h4>
+
+<p>
+
+Transfer money within seconds.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card shadow feature-card text-center">
+
+<h1>🔒</h1>
+
+<h4>Secure Wallet</h4>
+
+<p>
+
+Built with secure authentication.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card shadow feature-card text-center">
+
+<h1>🤖</h1>
+
+<h4>AI Assistant</h4>
+
+<p>
+
+Analyze spending and receive smart suggestions.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 PayFlow
+
+<br>
+
+Smart Payments. Smarter Insights.
+
+</footer>
+
+{% endblock %}

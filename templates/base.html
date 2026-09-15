@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}PayFlow{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Authentication CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+    {% block content %}
+    {% endblock %}
+    <!-- ==========================================
+     Toast Notification
+=========================================== -->
+
+{% if session.get('toast_message') %}
+
+<div id="toast" class="toast-notification">
+
+    <div class="toast-icon">✅</div>
+
+    <div class="toast-body">
+
+        <strong>Payment Successful</strong><br>
+
+        {{ session.pop('toast_message') }}
+
+    </div>
+
+</div>
+
+{% endif %}
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toast = document.getElementById("toast");
+
+    if (toast) {
+
+        setTimeout(() => {
+
+            toast.style.animation = "slideOut 0.4s ease forwards";
+
+        }, 6000);
+
+    }
+
+});
+
+</script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% block scripts %}{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
